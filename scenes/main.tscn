@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdy1pktwtajc0"]
+
+[ext_resource type="PackedScene" uid="uid://cfenlc8mnnd5o" path="res://scenes/audio_manager.tscn" id="1_g3db8"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Audio Manager" parent="." instance=ExtResource("1_g3db8")]
