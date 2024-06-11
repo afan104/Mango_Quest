@@ -1,22 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdy1pktwtajc0"]
+[gd_scene load_steps=10 format=3 uid="uid://bq0xtcd18kfne"]
 
-[ext_resource type="PackedScene" uid="uid://cfenlc8mnnd5o" path="res://scenes/audio_manager.tscn" id="1_g3db8"]
+[ext_resource type="PackedScene" path="res://scenes/audio_manager.tscn" id="1_g3db8"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_wbha3"]
-[ext_resource type="PackedScene" uid="uid://bmwu73qx48e4s" path="res://scenes/save_manager.tscn" id="3_mmx55"]
 [ext_resource type="PackedScene" uid="uid://bstsnhgqy48c5" path="res://scenes/player.tscn" id="2_oe40b"]
-[ext_resource type="Texture2D" uid="uid://bx14lriut1cme" path="res://assets/sprites/FreeCuteTileset/ExampleTiles.png" id="3_6yjt1"]
-[ext_resource type="Texture2D" uid="uid://4ltknhdyj3hg" path="res://assets/sprites/FreeCuteTileset/Tileset.png" id="4_8krcx"]
+[ext_resource type="Texture2D" uid="uid://bx14lriut1cme" path="res://assets/sprites/tilesets/ExampleTiles.png" id="3_6yjt1"]
+[ext_resource type="PackedScene" uid="uid://bmwu73qx48e4s" path="res://scenes/save_manager.tscn" id="3_mmx55"]
+[ext_resource type="Texture2D" uid="uid://4ltknhdyj3hg" path="res://assets/sprites/tilesets/Tileset.png" id="4_8krcx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_elptf"]
 texture = ExtResource("3_6yjt1")
-2:1/0 = 0
-2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:1/0/physics_layer_0/angular_velocity = 0.0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-3:1/0 = 0
-3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:1/0/physics_layer_0/angular_velocity = 0.0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:1/0 = 0
 4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:1/0/physics_layer_0/angular_velocity = 0.0
@@ -148,6 +140,7 @@ texture = ExtResource("3_6yjt1")
 3:5/0 = 0
 3:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:5/0/physics_layer_0/angular_velocity = 0.0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:5/0 = 0
 4:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:5/0/physics_layer_0/angular_velocity = 0.0
@@ -416,6 +409,14 @@ texture = ExtResource("3_6yjt1")
 8:2/0 = 0
 8:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:2/0/physics_layer_0/angular_velocity = 0.0
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pp3dc"]
 texture = ExtResource("4_8krcx")
@@ -553,6 +554,9 @@ sources/12 = SubResource("TileSetAtlasSource_pp3dc")
 
 [node name="Main" type="Node2D"]
 
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_oe40b")]
+position = Vector2(-3, -41)
+
 [node name="Levels" type="Node" parent="."]
 
 [node name="Game Manager" type="Node" parent="."]
@@ -565,12 +569,7 @@ unique_name_in_owner = true
 [node name="Save Manager" parent="Game Manager" instance=ExtResource("3_mmx55")]
 unique_name_in_owner = true
 
-[node name="Player" parent="." instance=ExtResource("2_oe40b")]
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_1iv8e")
 format = 2
-layer_0/tile_data = PackedInt32Array(131071, 65547, 2, 65536, 65547, 2, -65533, 65547, 2, -65532, 65547, 2, -65534, 65547, 2)
+layer_0/tile_data = PackedInt32Array(131071, 65547, 2, 65536, 65547, 2, 65537, 327691, 2, 65538, 327691, 2, 65539, 327691, 2, 65540, 327691, 2, 65541, 327691, 2, 65542, 327691, 2, 65543, 327691, 2, 131070, 327691, 2, 131069, 327691, 2, 131068, 327691, 2, 131067, 327691, 2, 131066, 327691, 2, 131065, 327691, 2, 131064, 327691, 2, 131063, 327691, 2, 131062, 327691, 2, 131061, 327691, 2, 131060, 327691, 2, 65544, 327691, 2, 65545, 327691, 2, 65546, 327691, 2, 65547, 327691, 2, 65548, 327691, 2, 65549, 327691, 2, 65550, 327691, 2, 65551, 327691, 2, -196607, 131083, 1, -196606, 131083, 1, -196605, 131083, 1, -196604, 131083, 1)
