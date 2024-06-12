@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bstsnhgqy48c5"]
+[gd_scene load_steps=39 format=3 uid="uid://bstsnhgqy48c5"]
 
 [ext_resource type="Texture2D" uid="uid://dp81f3uh6gq5y" path="res://assets/sprites/player/death.png" id="1_xhmmi"]
 [ext_resource type="Texture2D" uid="uid://bxtciilg6tkwb" path="res://assets/sprites/player/idle.png" id="2_86l30"]
@@ -199,6 +199,7 @@ func _process(delta):
 size = Vector2(5.5, 13.1667)
 
 [node name="Player" type="CharacterBody2D"]
+
 script = ExtResource("6_16mk3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -213,6 +214,9 @@ z_index = 5
 position = Vector2(0.5, 0.5)
 scale = Vector2(1.67, 1)
 shape = SubResource("RectangleShape2D_mj4yb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5.25, 5.25)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 1)

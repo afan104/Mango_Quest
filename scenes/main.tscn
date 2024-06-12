@@ -580,6 +580,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="TileMap" type="TileMap" parent="."]
+
 position = Vector2(28, -1)
 tile_set = SubResource("TileSet_1iv8e")
 format = 2

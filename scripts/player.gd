@@ -6,7 +6,9 @@ const JUMP_VELOCITY = -600.0
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var collision_shape_2d = $CollisionShape2D
+
 @onready var audio_manager = %"Audio Manager"
+
 @onready var ray_cast_2d = $RayCast2D
 
 # Handles gravity (default setting: 980)
