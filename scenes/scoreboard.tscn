@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsvyapq4d1xcj"]
+
+[ext_resource type="Script" path="res://scripts/score.gd" id="1_djffm"]
+[ext_resource type="FontFile" uid="uid://v7ydp4s7dib4" path="res://assets/PixelOperator8-Bold.ttf" id="1_vlnl4"]
+
+[node name="Scoreboard" type="CanvasLayer"]
+
+[node name="Score" type="RichTextLabel" parent="."]
+visible = false
+offset_top = 7.0
+offset_right = 632.0
+offset_bottom = 119.0
+theme_override_colors/default_color = Color(0, 0.85098, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_vlnl4")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+scroll_active = false
+script = ExtResource("1_djffm")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="timeout" from="Timer" to="Score" method="_on_timer_timeout"]

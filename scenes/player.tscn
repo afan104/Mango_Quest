@@ -1,14 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://bstsnhgqy48c5"]
+[gd_scene load_steps=30 format=3 uid="uid://bstsnhgqy48c5"]
 
 [ext_resource type="Texture2D" uid="uid://dp81f3uh6gq5y" path="res://assets/sprites/player/death.png" id="1_xhmmi"]
 [ext_resource type="Texture2D" uid="uid://bxtciilg6tkwb" path="res://assets/sprites/player/idle.png" id="2_86l30"]
 [ext_resource type="Texture2D" uid="uid://bg5qcsiwpeyqs" path="res://assets/sprites/player/jump.png" id="3_cje8k"]
 [ext_resource type="Texture2D" uid="uid://cer58hgt8a1en" path="res://assets/sprites/player/run.png" id="4_1n4uo"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="6_16mk3"]
-[ext_resource type="Texture2D" uid="uid://dwqexlu5b7ex1" path="res://assets/sprites/player/smoke_particles/FX052_01.png" id="6_l7anv"]
-[ext_resource type="Texture2D" uid="uid://dfuu4100ek4d7" path="res://assets/sprites/player/smoke_particles/FX052_02.png" id="7_gstu0"]
-[ext_resource type="Texture2D" uid="uid://bmgqlw2iaj86c" path="res://assets/sprites/player/smoke_particles/FX052_03.png" id="8_n4cq7"]
-[ext_resource type="Texture2D" uid="uid://cxwr6uw5h0cp3" path="res://assets/sprites/player/smoke_particles/FX052_04.png" id="9_00dhy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmvq8"]
 atlas = ExtResource("1_xhmmi")
@@ -202,43 +198,7 @@ func _process(delta):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mj4yb"]
 size = Vector2(5.5, 13.1667)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x2ov5"]
-atlas = ExtResource("6_l7anv")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_odqse"]
-atlas = ExtResource("7_gstu0")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ybg1"]
-atlas = ExtResource("8_n4cq7")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ner7a"]
-atlas = ExtResource("9_00dhy")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_hooi4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x2ov5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_odqse")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3ybg1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ner7a")
-}],
-"loop": true,
-"name": &"dust",
-"speed": 5.0
-}]
-
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("6_16mk3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -254,18 +214,12 @@ position = Vector2(0.5, 0.5)
 scale = Vector2(1.67, 1)
 shape = SubResource("RectangleShape2D_mj4yb")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5.25, 5.25)
-
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 1)
 target_position = Vector2(0, 30)
 
-[node name="EffectsSprite" type="AnimatedSprite2D" parent="."]
-visible = false
-sprite_frames = SubResource("SpriteFrames_hooi4")
-animation = &"dust"
-frame_progress = 0.951039
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="sprite_frames_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_sprite_frames_changed"]

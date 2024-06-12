@@ -1,12 +1,14 @@
 extends Node2D
 
 @onready var l1_background_music = $"L1 Background Music"
+@onready var mango_pickup = $"Mango Pickup"
 
 var audio_callback_map = {}
 
 func initialize_callback_map():
 	# Signal : [Audio Stream, Should Loop]
 	audio_callback_map[SignalBus.l1_background_music] = [l1_background_music, true]
+	audio_callback_map[SignalBus.mango_pickup] = [mango_pickup, false]
 
 func _ready():
 	initialize_callback_map()
