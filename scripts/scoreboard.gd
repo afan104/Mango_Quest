@@ -4,6 +4,10 @@ extends CanvasLayer
 @onready var timer = $"Timer"
 @onready var game_manager = %"Game Manager"
 
+# For text effects
+const start_effect = "[shake rate=20.0 level=50 connected=0]"
+const end_effect = "[/shake]"
+
 func _ready():
 	SignalBus.mango_pickup.connect(display_score)
 
@@ -14,8 +18,6 @@ func display_score():
 	
 	# Print score with text effects
 	var t = "Mangoes: %s" % game_manager.game_data.total_mangoes_collected
-	var start_effect = "[shake rate=20.0 level=50 connected=0]"
-	var end_effect = "[/shake]"
 	score.text =  start_effect + t + end_effect
 
 func _on_timer_timeout():
