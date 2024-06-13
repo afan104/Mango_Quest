@@ -1,11 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq0xtcd18kfne"]
+[gd_scene load_steps=14 format=3 uid="uid://bq0xtcd18kfne"]
 
-[ext_resource type="PackedScene" path="res://scenes/audio_manager.tscn" id="1_g3db8"]
+[ext_resource type="PackedScene" uid="uid://dtrm7ir14h76" path="res://scenes/audio_manager.tscn" id="1_g3db8"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_wbha3"]
 [ext_resource type="PackedScene" uid="uid://bstsnhgqy48c5" path="res://scenes/player.tscn" id="2_oe40b"]
+[ext_resource type="PackedScene" uid="uid://bjaaswtui1eux" path="res://scenes/killzone.tscn" id="2_qwsep"]
 [ext_resource type="Texture2D" uid="uid://bx14lriut1cme" path="res://assets/sprites/tilesets/ExampleTiles.png" id="3_6yjt1"]
 [ext_resource type="PackedScene" uid="uid://bmwu73qx48e4s" path="res://scenes/save_manager.tscn" id="3_mmx55"]
 [ext_resource type="Texture2D" uid="uid://4ltknhdyj3hg" path="res://assets/sprites/tilesets/Tileset.png" id="4_8krcx"]
+[ext_resource type="PackedScene" uid="uid://bsvyapq4d1xcj" path="res://scenes/scoreboard.tscn" id="7_0hy6h"]
+[ext_resource type="PackedScene" uid="uid://d2ovx6inftel7" path="res://scenes/mango.tscn" id="7_6y2bn"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3i230"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_elptf"]
 texture = ExtResource("3_6yjt1")
@@ -554,8 +559,13 @@ sources/12 = SubResource("TileSetAtlasSource_pp3dc")
 
 [node name="Main" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_oe40b")]
-position = Vector2(-3, -41)
+[node name="Player" parent="." instance=ExtResource("2_oe40b")]
+
+[node name="Killzone" parent="." instance=ExtResource("2_qwsep")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-264, 85)
+shape = SubResource("WorldBoundaryShape2D_3i230")
 
 [node name="Levels" type="Node" parent="."]
 
@@ -570,6 +580,21 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="TileMap" type="TileMap" parent="."]
+
+position = Vector2(28, -1)
 tile_set = SubResource("TileSet_1iv8e")
 format = 2
-layer_0/tile_data = PackedInt32Array(131071, 65547, 2, 65536, 65547, 2, 65537, 327691, 2, 65538, 327691, 2, 65539, 327691, 2, 65540, 327691, 2, 65541, 327691, 2, 65542, 327691, 2, 65543, 327691, 2, 131070, 327691, 2, 131069, 327691, 2, 131068, 327691, 2, 131067, 327691, 2, 131066, 327691, 2, 131065, 327691, 2, 131064, 327691, 2, 131063, 327691, 2, 131062, 327691, 2, 131061, 327691, 2, 131060, 327691, 2, 65544, 327691, 2, 65545, 327691, 2, 65546, 327691, 2, 65547, 327691, 2, 65548, 327691, 2, 65549, 327691, 2, 65550, 327691, 2, 65551, 327691, 2, -196607, 131083, 1, -196606, 131083, 1, -196605, 131083, 1, -196604, 131083, 1)
+layer_0/tile_data = PackedInt32Array(327668, 327691, 2, 327669, 327691, 2, 327670, 327691, 2, 327671, 327691, 2, 327672, 327691, 2, 327673, 327691, 2, 327674, 327691, 2, 327675, 327691, 2, 327676, 327691, 2, 327677, 65547, 2, 327678, 65547, 2, 327679, 327691, 2, 262144, 327691, 2, 1, 131083, 1, 262145, 327691, 2, 2, 131083, 1, 262146, 327691, 2, 262147, 327691, 2, 262148, 327691, 2, 262149, 327691, 2, 262150, 327691, 2, 262151, 327691, 2, 262152, 327691, 2, 262153, 327691, 2, 262154, 327691, 2, 262155, 327691, 2, 262156, 327691, 2, 262157, 327691, 2, 327666, 327691, 2, 327667, 327691, 2, 65535, 131083, 1, 0, 131083, 1)
+
+[node name="Scoreboard" parent="." instance=ExtResource("7_0hy6h")]
+
+[node name="Mangoes" type="Node" parent="."]
+
+[node name="Mango" parent="Mangoes" instance=ExtResource("7_6y2bn")]
+position = Vector2(-34, 50)
+
+[node name="Mango2" parent="Mangoes" instance=ExtResource("7_6y2bn")]
+position = Vector2(-96, 49)
+
+[node name="Mango3" parent="Mangoes" instance=ExtResource("7_6y2bn")]
+position = Vector2(-157, 50)
