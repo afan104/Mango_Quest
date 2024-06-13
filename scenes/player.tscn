@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bstsnhgqy48c5"]
+[gd_scene load_steps=29 format=3 uid="uid://ckbll1hm06uyx"]
 
 [ext_resource type="Texture2D" uid="uid://dp81f3uh6gq5y" path="res://assets/sprites/player/death.png" id="1_xhmmi"]
 [ext_resource type="Texture2D" uid="uid://bxtciilg6tkwb" path="res://assets/sprites/player/idle.png" id="2_86l30"]
@@ -181,25 +181,10 @@ animations = [{
 "speed": 16.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_mva4l"]
-script/source = "extends AnimatedSprite2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mj4yb"]
 size = Vector2(5.5, 13.1667)
 
 [node name="Player" type="CharacterBody2D"]
-
 script = ExtResource("6_16mk3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -207,16 +192,12 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 sprite_frames = SubResource("SpriteFrames_qolrk")
 animation = &"idle"
 autoplay = "idle"
-script = SubResource("GDScript_mva4l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 5
 position = Vector2(0.5, 0.5)
 scale = Vector2(1.67, 1)
 shape = SubResource("RectangleShape2D_mj4yb")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5.25, 5.25)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, 1)

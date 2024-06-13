@@ -20,4 +20,4 @@ scroll_active = false
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 
-[connection signal="timeout" from="Timer" to="Score" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
