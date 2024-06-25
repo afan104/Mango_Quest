@@ -6,9 +6,7 @@ const JUMP_VELOCITY = -600.0
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var collision_shape_2d = $CollisionShape2D
-
 @onready var audio_manager = %"Audio Manager"
-
 @onready var ray_cast_2d = $RayCast2D
 
 # Handles gravity (default setting: 980)
@@ -21,8 +19,8 @@ var collision_shapes_pos = {"default" = Vector2(0.5, 0.5),
 var collision_shapes_scale = {"default" = Vector2(1.67, 1),
 							 "jump_0" = Vector2(1.67, 1), 
 							 "jump_1" = Vector2(1.67, 1.07)}
-
-
+				
+	
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -79,4 +77,5 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
 
