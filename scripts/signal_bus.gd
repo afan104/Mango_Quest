@@ -1,5 +1,6 @@
 extends Node
 
+
 signal l1_background_music
 signal mango_pickup
-signal next_level
+signal killed_by_enemy

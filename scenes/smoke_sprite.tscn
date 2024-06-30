@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://xljek27lsrpy"]
+
+[ext_resource type="Texture2D" uid="uid://dwqexlu5b7ex1" path="res://assets/sprites/player/smoke_particles/FX052_01.png" id="1_up28l"]
+[ext_resource type="Texture2D" uid="uid://dfuu4100ek4d7" path="res://assets/sprites/player/smoke_particles/FX052_02.png" id="2_ytlru"]
+[ext_resource type="Texture2D" uid="uid://bmgqlw2iaj86c" path="res://assets/sprites/player/smoke_particles/FX052_03.png" id="3_dd064"]
+[ext_resource type="Texture2D" uid="uid://cxwr6uw5h0cp3" path="res://assets/sprites/player/smoke_particles/FX052_04.png" id="4_jaum6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2ov5"]
+atlas = ExtResource("1_up28l")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odqse"]
+atlas = ExtResource("2_ytlru")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ybg1"]
+atlas = ExtResource("3_dd064")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ner7a"]
+atlas = ExtResource("4_jaum6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hooi4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2ov5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odqse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ybg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ner7a")
+}],
+"loop": true,
+"name": &"dust",
+"speed": 5.0
+}]
+
+[node name="SmokeSprite" type="AnimatedSprite2D"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_hooi4")
+animation = &"dust"
+frame_progress = 0.916333
