@@ -20,6 +20,9 @@ var collision_shapes_scale = {"default" = Vector2(1.67, 1),
 							 "jump_0" = Vector2(1.67, 1), 
 							 "jump_1" = Vector2(1.67, 1.07)}
 				
+
+func set_player_pos(pos):
+	global_position = pos
 	
 func _physics_process(delta):
 	# Add the gravity.

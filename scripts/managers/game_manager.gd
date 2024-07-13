@@ -38,8 +38,8 @@ func add_to_mango_score():
 	game_data.total_mangoes_collected += 1
 	print("score: %s" % game_data.total_mangoes_collected)
 
-func load_player_at_current_spawn():
-	player.global_position = jungle.current_level.spawn.global_position
+func load_player_at_current_spawn(spawn):
+	player.set_player_pos(spawn.global_position)
 
 func change_camera_focus(focal_point):
 	active_focus_zone.position = focal_point

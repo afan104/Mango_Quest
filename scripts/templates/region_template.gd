@@ -58,4 +58,4 @@ func load_level():
 	if previous_level:
 		previous_level.queue_free()
 		
-	SignalBus.level_ready.emit()
+	SignalBus.level_ready.emit(current_level.spawn)
