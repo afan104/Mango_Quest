@@ -24,11 +24,10 @@ unique_name_in_owner = true
 
 [node name="Active Level Center" type="Sprite2D" parent="Game Manager"]
 unique_name_in_owner = true
-visible = false
+position = Vector2(2.08165e-12, 2.08165e-12)
 texture = SubResource("PlaceholderTexture2D_4mhty")
 
 [node name="Main Camera" type="Camera2D" parent="Game Manager/Active Level Center"]
-zoom = Vector2(3.1, 3.41)
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 editor_draw_limits = true
@@ -44,3 +43,4 @@ scale = Vector2(1.5, 1.5)
 unique_name_in_owner = true
 
 [node name="Scoreboard" parent="." instance=ExtResource("6_ax5nc")]
+visible = false
