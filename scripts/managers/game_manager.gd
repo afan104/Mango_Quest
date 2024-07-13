@@ -2,9 +2,9 @@ extends Node
 
 # References to nodes in the scene
 @onready var save_manager = $"Save Manager"
-@onready var active_level_center = $"Active Level Center"
 @onready var player = %Player
 @onready var jungle = %Jungle
+@onready var active_focus_zone = %"Active Focus Zone"
 
 # Game data variable
 var game_data = null
@@ -12,9 +12,12 @@ var game_data = null
 # Called when the node is added to the scene
 func _ready():
 	load_game_data()
-	SignalBus.mango_pickup.connect(add_to_mango_score)
 	save_manager.start_autosaving()
+	
+	SignalBus.mango_pickup.connect(add_to_mango_score)
 	SignalBus.next_level.connect(next_level)
+	SignalBus.change_focus.connect(change_camera_focus)
+	SignalBus.level_ready.connect(load_player_at_current_spawn)
 
 # Loads game data from the save manager
 func load_game_data():
@@ -35,17 +38,15 @@ func add_to_mango_score():
 	game_data.total_mangoes_collected += 1
 	print("score: %s" % game_data.total_mangoes_collected)
 
+func load_player_at_current_spawn(spawn):
+	player.set_player_pos(spawn.global_position)
+
+func change_camera_focus(focal_point):
+	active_focus_zone.position = focal_point
+	
 # Prepares and changes to the next level
 func next_level():
-	print("Preparing to Change Level")
 	jungle.next_level()
-	
-	# Update positions for active level center and player
-	var new_level_center = jungle.current_level.level_center.global_position
-	active_level_center.global_position = new_level_center
-	player.global_position = new_level_center
-	
-	print("Changed Level with new center at %s" % new_level_center)
 
 # Called every physics frame
 func _physics_process(_delta):

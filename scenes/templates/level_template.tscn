@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgvv6ab0t1s2e"]
+[gd_scene load_steps=7 format=3 uid="uid://dgvv6ab0t1s2e"]
 
-[ext_resource type="Script" path="res://scripts/templates/level_template.gd" id="1_c0r0i"]
 [ext_resource type="Texture2D" uid="uid://c8p3fg0o111gg" path="res://assets/sprites/tilesets/custom/greyboxing_tileset.png" id="2_057qq"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_07hf4"]
+[ext_resource type="Script" path="res://scripts/util/focus_zone.gd" id="3_m0ajh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rxtpr"]
 texture = ExtResource("2_057qq")
@@ -68,14 +66,12 @@ tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rxtpr")
 
-[node name="Level" type="Node2D"]
-script = ExtResource("1_c0r0i")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfsnd"]
+size = Vector2(320, 180)
 
-[node name="Level Center" type="Sprite2D" parent="."]
-z_index = 5
-position = Vector2(2.08165e-12, 2.08165e-12)
-scale = Vector2(32, 32)
-texture = SubResource("PlaceholderTexture2D_07hf4")
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_nl30a"]
+
+[node name="Level" type="Node2D"]
 
 [node name="LevelBoundary" type="StaticBody2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
@@ -92,3 +88,22 @@ rendering_quadrant_size = 8
 format = 2
 
 [node name="Background" type="Node2D" parent="."]
+
+[node name="Level Foci" type="Node2D" parent="."]
+
+[node name="Zone" type="Area2D" parent="Level Foci"]
+script = ExtResource("3_m0ajh")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Foci/Zone"]
+shape = SubResource("RectangleShape2D_qfsnd")
+
+[node name="Spawn" type="Node2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Placeholder" type="Sprite2D" parent="Spawn"]
+position = Vector2(-2.25, 2.75)
+scale = Vector2(5.5, 6.5)
+texture = SubResource("PlaceholderTexture2D_nl30a")
+
+[connection signal="body_entered" from="Level Foci/Zone" to="Level Foci/Zone" method="_on_body_entered"]

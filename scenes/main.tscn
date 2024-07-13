@@ -1,14 +1,14 @@
 [gd_scene load_steps=8 format=3 uid="uid://cdy1pktwtajc0"]
 
-[ext_resource type="PackedScene" uid="uid://dtrm7ir14h76" path="res://scenes/audio_manager.tscn" id="1_g3db8"]
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_wbha3"]
+[ext_resource type="PackedScene" uid="uid://dtrm7ir14h76" path="res://scenes/managers/audio_manager.tscn" id="1_g3db8"]
+[ext_resource type="Script" path="res://scripts/managers/game_manager.gd" id="1_wbha3"]
 [ext_resource type="PackedScene" uid="uid://ckbll1hm06uyx" path="res://scenes/player.tscn" id="2_oe40b"]
-[ext_resource type="PackedScene" uid="uid://bmwu73qx48e4s" path="res://scenes/save_manager.tscn" id="3_mmx55"]
+[ext_resource type="PackedScene" uid="uid://bmwu73qx48e4s" path="res://scenes/managers/save_manager.tscn" id="3_mmx55"]
 [ext_resource type="PackedScene" uid="uid://bh65qmr6hk43b" path="res://scenes/regions/jungle/jungle.tscn" id="5_roprh"]
-[ext_resource type="PackedScene" uid="uid://bsvyapq4d1xcj" path="res://scenes/scoreboard.tscn" id="6_ax5nc"]
+[ext_resource type="PackedScene" uid="uid://bsvyapq4d1xcj" path="res://scenes/util/scoreboard.tscn" id="6_ax5nc"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4mhty"]
-size = Vector2(32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dauwv"]
+size = Vector2(320, 180)
 
 [node name="Main" type="Node2D"]
 
@@ -18,19 +18,26 @@ script = ExtResource("1_wbha3")
 
 [node name="Audio Manager" parent="Game Manager" instance=ExtResource("1_g3db8")]
 unique_name_in_owner = true
+visible = false
 
 [node name="Save Manager" parent="Game Manager" instance=ExtResource("3_mmx55")]
 unique_name_in_owner = true
+visible = false
 
-[node name="Active Level Center" type="Sprite2D" parent="Game Manager"]
+[node name="Active Focus Zone" type="Area2D" parent="Game Manager"]
+unique_name_in_owner = true
+metadata/_edit_group_ = true
+
+[node name="Main Camera" type="Camera2D" parent="Game Manager/Active Focus Zone"]
 unique_name_in_owner = true
 position = Vector2(2.08165e-12, 2.08165e-12)
-texture = SubResource("PlaceholderTexture2D_4mhty")
-
-[node name="Main Camera" type="Camera2D" parent="Game Manager/Active Level Center"]
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 editor_draw_limits = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game Manager/Active Focus Zone"]
+visible = false
+shape = SubResource("RectangleShape2D_dauwv")
 
 [node name="Player" parent="." instance=ExtResource("2_oe40b")]
 unique_name_in_owner = true
@@ -43,4 +50,5 @@ scale = Vector2(1.5, 1.5)
 unique_name_in_owner = true
 
 [node name="Scoreboard" parent="." instance=ExtResource("6_ax5nc")]
-visible = false
+
+[connection signal="body_entered" from="Game Manager/Active Focus Zone" to="Game Manager/Active Focus Zone" method="_on_body_entered"]

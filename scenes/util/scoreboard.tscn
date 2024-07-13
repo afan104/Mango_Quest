@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bsvyapq4d1xcj"]
 
-[ext_resource type="Script" path="res://scripts/scoreboard.gd" id="1_38mhe"]
+[ext_resource type="Script" path="res://scripts/util/scoreboard.gd" id="1_38mhe"]
 [ext_resource type="FontFile" uid="uid://v7ydp4s7dib4" path="res://assets/PixelOperator8-Bold.ttf" id="1_vlnl4"]
 
 [node name="Scoreboard" type="CanvasLayer"]

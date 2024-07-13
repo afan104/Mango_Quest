@@ -1,3 +1,4 @@
 extends Node2D
 
-@onready var level_center = $"Level Center"
+# Stores the spawn point node. This is where the player should spawn.
+@onready var spawn = $Spawn

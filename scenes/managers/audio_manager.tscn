@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtrm7ir14h76"]
 
-[ext_resource type="Script" path="res://scripts/audio_manager.gd" id="1_d6sw5"]
+[ext_resource type="Script" path="res://scripts/managers/audio_manager.gd" id="1_d6sw5"]
 [ext_resource type="AudioStream" uid="uid://cr82cb5y7iksa" path="res://assets/sounds/mango_pickup.wav" id="2_ha1cg"]
 
 [sub_resource type="AudioStream" id="AudioStream_00snd"]

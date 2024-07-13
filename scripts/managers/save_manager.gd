@@ -32,7 +32,7 @@ func save_data_to_disk(updated_game_data):
 	file.store_string(save_dict_string)
 	file.close()
 	
-	print("Done.")
+	print("Saved to disk.")
 
 # Loads game data from disk
 func load_data_from_disk():
@@ -59,7 +59,7 @@ func load_data_from_disk():
 		game_data.set(property.name, data_dict[property.name])
 	
 	file.close()
-	print("Done.")
+	print("Loaded from disk.")
 	
 	return game_data
 
